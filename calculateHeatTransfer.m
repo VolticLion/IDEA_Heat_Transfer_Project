@@ -2,6 +2,8 @@ function [heatTransfer] = calculateHeatTransfer(imageFileName)
 %CALCULATEHEATTRANSFER Calculates heat transfer from a color IR image
 %   Detailed explanation goes here
 
+%TODO: Clairify outputs of this function & complete their calculation   
+
 %Import Image
 colorImage = imread(imageFileName);
 
