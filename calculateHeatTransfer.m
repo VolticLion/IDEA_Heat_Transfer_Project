@@ -2,7 +2,7 @@ function [heatTransfer] = calculateHeatTransfer(imageFileName)
 %CALCULATEHEATTRANSFER Calculates heat transfer from a color IR image
 %   Detailed explanation goes here
 
-%TODO: Clairify outputs of this function & complete their calculation   
+%TODO: Clairify outputs of this function & complete their calculation   1x`
 
 %Import Image
 colorImage = imread(imageFileName);
@@ -14,10 +14,15 @@ grayscaleImage = rgb2gray(colorImage);
 averageValuePerRow = mean(grayscaleImage, 2);
 
 %Set Min Max Temp
-T_min = null;
-T_max = null;
+
+[n,m] = size(grayscaleImage);
+
+T_min = min(grayscaleImage);
+T_max = max(grayscaleImage);
+
 
 %Set Pixel Values with Min Max Temp
+renameThisVariable = T_min + (T_max - T_min) * (x3 - min(x3)) / (max(x3) - min(x3));
 
 %Plot Temp vs pixel value
 
