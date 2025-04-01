@@ -1,4 +1,4 @@
-function [heatTransfer] = calculateHeatTransfer(imageFileName)
+function [heatTransfer] = calculateHeatTransfer(imageFileName, maxTemp, minTemp)
 %CALCULATEHEATTRANSFER Calculates heat transfer from a color IR image
 %   Detailed explanation goes here
 
@@ -11,26 +11,28 @@ colorImage = imread(imageFileName);
 grayscaleImage = rgb2gray(colorImage);
 
 %Calculate average value over row in image
-averageValuePerRow = mean(grayscaleImage, 2);
+averageValuesPerRow = mean(grayscaleImage, 2);
 
 %Set Min Max Temp
-
-[n,m] = size(grayscaleImage);
-
-T_min = min(grayscaleImage);
-T_max = max(grayscaleImage);
+T_min = minTemp;
+T_max = maxTemp;
 
 
 %Set Pixel Values with Min Max Temp
-renameThisVariable = T_min + (T_max - T_min) * (x3 - min(x3)) / (max(x3) - min(x3));
+scaledValuesPerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
 
 %Plot Temp vs pixel value
+plot(scaledValuePerRow,averageValuePerRow);
 
 %Create variable for each material k value
+k1 = 
+k2 = 
 
 %Create variable for delta t value for each material
+deltaT = 
 
 %Calculate thermal resistance
+rConductivity = (L) / (k1*A);
 
 %Calculate q,cond value for each material
 
