@@ -35,6 +35,9 @@ plot(scaledValuePerRow,averageValuePerRow);
 rConductivity = (L) / (k1*A);
 
 %Calculate q,cond value for each material
+q1 = qCond();
+q2 = qCond();
+q3 = qCond();
 
 %Calculate q,cond,total for all materials
 
