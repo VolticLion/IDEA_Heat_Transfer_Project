@@ -21,7 +21,7 @@ T_max = maxTemp;
 %Set Pixel Values with Min Max Temp
 scaledValuesPerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
 
-%Plot Temp vs pixel value
+%Plot Temp vs pixel value (MAY NEED FIX)
 plot(scaledValuePerRow,averageValuePerRow);
 
 %Create variable for each material k value
@@ -33,7 +33,10 @@ k3 = kValues(3);
 %deltaT1 =
 
 %Calculate thermal resistance
-rConductivity = (L) / (k1*A);
+rConductivity = 0;
+for eachR = 1:3
+    rConductivity = rConductivity + rCond(L, kValues(eachR), A);
+end
 
 %Calculate q,cond value for each material
 q1 = qCond();
