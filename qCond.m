@@ -1,7 +1,7 @@
-function [heatConduction] = qCond(tOne, tTwo, r)
+function [heatConduction] = qCond(deltaT, r)
 %QCOND Summary of this function goes here
 %   Detailed explanation goes here
 
-heatConduction = (tTwo - tOne) / r;
+heatConduction = deltaT / r;
 
 end
