@@ -39,13 +39,14 @@ L2 = lValues(2);
 
 rConductivity1 = rCond(L1, kValues(1), areaCont);
 rConductivity2 = rCond(L2, kValues(2), areaCont);
+rSum = rConductivity2 + rConductivity1;
 
 %Calculate q,cond value for each material
 q1 = qCond(deltaT1, rConductivity1);
 q2 = qCond(deltaT2, rConductivity2);
 
 %Calculate q,cond,total for all materials
-qTotal = qCond(deltaTTotal);
+qTotal = qCond(deltaTTotal, rSum);
 heatTransfered = qTotal;
 
 %Calculate theoretical delta t using qcond,total and thermal conductivity(k)
