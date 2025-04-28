@@ -52,14 +52,15 @@ end
 
 %Calculate q,cond value for each material
 q1 = qCond(deltaT1, rConductivity1);
-q2 = qCond(deltaT2, rConductivity2);
+if length(kValues) > 1
+    q2 = qCond(deltaT2, rConductivity2);
+else
+    q2 = qCond(deltaT2, rConductivity1);
+end
 
 
 %Calculate q,cond,total for all materials
 qTotal = qCond(deltaTTotal, rSum);
 
-%Calculate theoretical delta t using qcond,total and thermal conductivity(k)
-
-%Error between theoretical temp difference and real temperature difference
 end
 
