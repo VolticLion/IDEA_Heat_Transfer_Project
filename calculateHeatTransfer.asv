@@ -22,7 +22,7 @@ T_max = maxTemp;
 scaledValuePerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
 
 %Plot Temp vs pixel value (MAY NEED FIX)
-plot(averageValuePerRow, scaledValuePerRow);
+plot(1:length(scaledValuePerRow), scaledValuePerRow);
 
 %Create variable for each material k value
 k1 = kValues(1);
@@ -49,13 +49,12 @@ end
 
 
 %Calculate q,cond value for each material
-q1 = qCond(deltaT, rConductivity1);
-if length(kValues) > 1
-    q2 = qCond(deltaT, rConductivity2);
-end
+q1 = qCond(deltaT(2), rConductivity1);
+q2 = qCond(deltaT(3), rConductivity2);
+
 
 %Calculate q,cond,total for all materials
-qTotal = qCond(deltaTTotal, rSum);
+qTotal = qCond(deltaT(1), rSum);
 heatTransfered = qTotal;
 
 %Calculate theoretical delta t using qcond,total and thermal conductivity(k)

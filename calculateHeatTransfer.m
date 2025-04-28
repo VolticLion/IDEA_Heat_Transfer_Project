@@ -1,4 +1,4 @@
-function [heatTransfered] = calculateHeatTransfer(imageFileName, maxTemp, minTemp, kValues, lValues, areaCont, deltaT)
+function [qTotal, q1, q2] = calculateHeatTransfer(imageFileName, maxTemp, minTemp, kValues, lValues, areaCont, deltaTValues)
 %CALCULATEHEATTRANSFER Calculates heat transfer from a color IR image
 %   Detailed explanation goes here
 
@@ -23,6 +23,8 @@ scaledValuePerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageV
 
 %Plot Temp vs pixel value (MAY NEED FIX)
 plot(1:length(scaledValuePerRow), scaledValuePerRow);
+title(imageFileName);
+hold on;
 
 %Create variable for each material k value
 k1 = kValues(1);
@@ -31,9 +33,9 @@ if length(kValues) > 1
 end
 
 %Create variable for delta t value for each material
-%deltaT1 = 
-%deltaT2 = 
-%deltaTTotal = 
+deltaT1 = deltaTValues(2);
+deltaT2 = deltaTValues(3);
+deltaTTotal = deltaTValues(1);
 
 %Calculate thermal resistance
 L1 = lValues(1);
@@ -49,14 +51,12 @@ end
 
 
 %Calculate q,cond value for each material
-q1 = qCond(deltaT, rConductivity1);
-if length(kValues) > 1
-    q2 = qCond(deltaT, rConductivity2);
-end
+q1 = qCond(deltaT1, rConductivity1);
+q2 = qCond(deltaT2, rConductivity2);
+
 
 %Calculate q,cond,total for all materials
 qTotal = qCond(deltaTTotal, rSum);
-heatTransfered = qTotal;
 
 %Calculate theoretical delta t using qcond,total and thermal conductivity(k)
 
