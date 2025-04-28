@@ -22,7 +22,7 @@ T_max = maxTemp;
 scaledValuePerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
 
 %Plot Temp vs pixel value (MAY NEED FIX)
-plot(1:length(scaledValuePerRow), scaledValuePerRow);
+plot(averageValuePerRow, scaledValuePerRow);
 
 %Create variable for each material k value
 k1 = kValues(1);
