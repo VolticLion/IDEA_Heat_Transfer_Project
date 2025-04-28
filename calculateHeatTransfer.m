@@ -11,7 +11,7 @@ colorImage = imread(imageFileName);
 grayscaleImage = rgb2gray(colorImage);
 
 %Calculate average value over row in image
-averageValuesPerRow = mean(grayscaleImage, 2);
+averageValuePerRow = mean(grayscaleImage, 2);
 
 %Set Min Max Temp
 T_min = minTemp;
@@ -19,7 +19,7 @@ T_max = maxTemp;
 
 
 %Set Pixel Values with Min Max Temp
-scaledValuesPerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
+scaledValuePerRow = T_min + (T_max - T_min) * (averageValuePerRow - min(averageValuePerRow)) / (max(averageValuePerRow) - min(averageValuePerRow));
 
 %Plot Temp vs pixel value (MAY NEED FIX)
 plot(averageValuePerRow, scaledValuePerRow);

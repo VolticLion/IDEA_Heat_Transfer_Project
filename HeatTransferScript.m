@@ -14,7 +14,8 @@ minTempExp3 = 28.4;
 maxTempExp3 = 102.78;
 lValuesExp3 = [0.02566, 0.02564];
 areaContExp3 = 0.02488 * 0.02507;
+kValuesExp3 = [kValues(1), kValues(3)];
 
-[] = calculateHeatTransfer('fileName', maxTempExp1, minTempExp1, kValues(1));
-[] = calculateHeatTransfer('fileName');
-[] = calculateHeatTransfer('fileName');
+[fart1] = calculateHeatTransfer('Pine.JPG', maxTempExp1, minTempExp1, kValues(1));
+%[fart2] = calculateHeatTransfer('Oak.JPG', maxTempExp2, minTempExp2, kValues(2));
+%[fart3] = calculateHeatTransfer('PineNylon.JPG', maxTempExp3, minTempExp3, kValuesExp3);
